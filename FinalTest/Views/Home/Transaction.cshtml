@@ -1,0 +1,203 @@
+﻿@model FinalTest.Models.User
+@{
+    Layout = null;
+    /*Created or Uptaded by Roxane Seibel / student number : 74527*/
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width-device-width" />
+    <title>Bank Part</title>
+    <style>
+        a {
+            color: black;
+        }
+
+            a:hover {
+                color: darkslategrey;
+            }
+
+        body {
+            background-color: cadetblue;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+
+
+        table {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #000;
+            border-radius: 8px;
+            padding: 20px 20px;
+            background-color: #008080;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .top {
+            background-color: #008080;
+        }
+
+        .un {
+            background-color: cadetblue;
+            border: 1px solid #000;
+            border-radius: 2px;
+        }
+
+        .deux {
+            background-color: white;
+            border: 1px solid #000;
+            border-radius: 2px;
+        }
+        .bleu{
+            color:cadetblue;
+            background-color:cadetblue;
+        }
+        .bleu input {
+            border-width: 0;
+            color: cadetblue;
+            background-color: cadetblue;
+            border-block-color:cadetblue;
+            border-block-end-color:cadetblue;
+            border-color:cadetblue;
+            border-block-start-color:cadetblue;
+            border-bottom-color:cadetblue;
+            border-left-color:cadetblue;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Edit</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+        <div class="bleu">
+            <div>
+                @Html.LabelFor(model => model.AccountNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.AccountNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AccountNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div >
+                @Html.LabelFor(model => model.Passeword, htmlAttributes: new { @class = "control-label col-md-2" })
+                
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Passeword, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Passeword, "", new { @class = "text-danger" })
+                    </div>
+                
+
+            </div>
+        </div>
+
+
+            <div class="form-horizontal" align="center">
+                <table>
+
+                    <tr>
+                        <div class="form-group">
+                        <td>
+                            @Html.LabelFor(model => model.Balance, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </td>
+                        <td>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+
+
+            </div>
+            </tr>
+
+            <tr>
+                <div class="form-group">
+                <td>
+                    @Html.LabelFor(model => model.AccountType, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+
+                <td>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AccountType, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AccountType, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+
+        </div>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label class="field-validation-error">@Html.DisplayFor(model => Model.LoginErrorMessage)</label>
+            </td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div align="right">
+                    @Html.ActionLink("Back to List", "Display")
+                </div>
+            </td>
+
+        </tr>
+
+        </table>
+
+        </div>
+
+        </div>
+    }
+
+    <div>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+    </div>
+</html>
